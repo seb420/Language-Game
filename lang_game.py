@@ -8,12 +8,7 @@
 
 
 # define the constants
-MENU_OPTIONS = {1: "instructions",
-                2: "english_to_norwegian",
-                3: "norwegian_to_english",
-                4: "study",
-                5: "teacher_menu",
-                6: "quit"}
+
 # define the variables
 
 
@@ -29,11 +24,13 @@ def try_int(number):
         return False
 
 
+
 def menu():
     """
-    This function will print out the menu and return the option that the user selects.
+    This function will print out the menu and return the option that the user
+    selects.
     """
-    print("      Norwegian Game")
+    print("\n     Norwegian Game")
     print("1.............Instructions")
     print("2.....English to Norwegian")
     print("3.....Norwegian to English")
@@ -48,10 +45,12 @@ def menu():
 
 def main():
     """
-    This is to run the main program and manage all the functions within it.
-    call the corresponding function based on the option selected in the menu function.
+    This is to run the main program and manage all the functions within it
+    call the corresponding function based on the option selected in the menu.
     """
-    print(menu())
+    # loop until the user quits
+    while True:
+        MENU_OPTIONS[menu()]()
 
 
 def instructions():
@@ -67,6 +66,45 @@ def instructions():
           "bank the points. You only have three wrong guesses before the \n"
           "game is over though so be careful.")
 
+
+def english_to_norwegian():
+    """
+    the game in e to n
+    """
+
+
+def norwegian_to_english():
+    """
+        the game in n to e
+    """
+
+
+def study():
+    """
+    study
+    """
+
+
+def teacher_menu():
+    """
+    menu for the teachers
+    """
+
+
+def quit_game():
+    """
+    quits
+    """
+    # quit the whole program
+    exit()
+
+
+MENU_OPTIONS = {1: instructions,
+                2: english_to_norwegian,
+                3: norwegian_to_english,
+                4: study,
+                5: teacher_menu,
+                6: quit_game}
 
 # call the main function
 main()
