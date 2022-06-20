@@ -109,11 +109,13 @@ MENU_OPTIONS = {1: instructions,
 # call the main function
 main()
 """
-      Norwegian Game      
-1.............Instructions
-2.....English to Norwegian
-3.....Norwegian to English
-4....................Study
-5.............Teacher Menu
-6.....................Quit
+Question 1:
+Translate the following word into Norwegian:
+"Hello"
+Answer
+
+"""
+"""
+"""
+"""
 """
