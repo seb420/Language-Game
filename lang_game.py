@@ -5,9 +5,25 @@
 
 
 # import any necessary functions
-
+import random
 
 # define the constants
+WORDS = {"easy": {"hi": "hei", "good": "god", "thanks": "takk", "and": "og",
+                  "one": "en", "yes": "ja", "no": "nei", "i": "jeg",
+                  "you": "du", "maybe": "kanskje"},
+         "medium": {"bye": "ha det", "bread": "brød", "sorry": "unnskyld",
+                    "welcome": "velkommen", "eats": "spiser",
+                    "good morning": "god morgen", "good night": "god kveld",
+                    "thousand": "tusen", "bear": "bjørn", "beer": "øl"},
+         "hard": {"the bread": "brødet", "please": "vær så snill",
+                  "thank you very much": "tusen takk",
+                  "cup of coffee": "kopp kaffe",
+                  "what is your name": "hva heter du",
+                  "what did you say": "hva sa du", "the ducks": "endene",
+                  "tomato soup": "tomatsuppe",
+                  "do you need it": "trenger du det",
+                  "it is food": "det er mat"}}
+MIN_LIVES = 0
 
 # define the variables
 
@@ -22,7 +38,6 @@ def try_int(number):
         return True
     except ValueError:
         return False
-
 
 
 def menu():
@@ -71,7 +86,27 @@ def english_to_norwegian():
     """
     the game in e to n
     """
+    lives = 3
+    print("\n--- English to Norwegian ---")
+    print("\nLives: ❤❤❤")
+    question = 0
+    while lives > MIN_LIVES:
+        question += 1
+        difficulty = random.randint(1, question)
+        if difficulty <= 2:
+            difficulty = "easy"
+        elif difficulty == 3 or difficulty == 4:
+            difficulty = "medium"
+        elif difficulty >= 5:
+            difficulty = "hard"
+        word = random.choice(list(WORDS[difficulty].values))
+        print(word)
+        lives -= 1
 
+
+
+
+    #💔❤
 
 def norwegian_to_english():
     """
@@ -108,14 +143,7 @@ MENU_OPTIONS = {1: instructions,
 
 # call the main function
 main()
-"""
-Question 1:
-Translate the following word into Norwegian:
-"Hello"
-Answer
 
 """
-"""
-"""
-"""
+What is "Hello" in Norwegian? 
 """
