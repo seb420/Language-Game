@@ -87,8 +87,8 @@ def english_to_norwegian():
     the game in e to n
     """
     lives = 3
-    print("\n--- English to Norwegian ---")
-    print("\nLives: ❤❤❤")
+    print("\n--- English to Norwegian ---\n")
+    print(heart_calc(lives))
     question = 0
     while lives > MIN_LIVES:
         question += 1
@@ -98,15 +98,27 @@ def english_to_norwegian():
         elif difficulty == 3 or difficulty == 4:
             difficulty = "medium"
         elif difficulty >= 5:
-            difficulty = "hard"
-        word = random.choice(list(WORDS[difficulty].values))
-        print(word)
-        lives -= 1
+            if difficulty % 3 == 0:
+                difficulty = "hard"
+            elif difficulty % 3 == 1:
+                difficulty = "medium"
+            elif difficulty % 3 == 2:
+                difficulty = "hard"
+        word = random.choice(list(WORDS[difficulty]))
+        answer = input(f"What is '{word}' in Norwegian? ").lower().strip()
+        if answer == WORDS[difficulty][word]:
+            print("\nWell done!")
+            print(heart_calc(lives))
+
+        else:
+            print(f"\nUnlucky, '{word}' in Norwegian is "
+                  f"'{WORDS[difficulty][word]}'")
+            lives -= 1
+            print(heart_calc(lives))
 
 
+    # 💔❤
 
-
-    #💔❤
 
 def norwegian_to_english():
     """
@@ -124,6 +136,22 @@ def teacher_menu():
     """
     menu for the teachers
     """
+
+
+def heart_calc(hearts):
+    """
+    calculate and print the remaining hearts
+    """
+    if hearts == 3:
+        picture = "❤❤❤"
+    elif hearts == 2:
+        picture = "❤❤💔"
+    elif hearts == 1:
+        picture = "❤💔💔"
+    elif hearts == 0:
+        picture = "💔💔💔"
+    return f"Lives: {picture}\n"
+
 
 
 def quit_game():
