@@ -13,7 +13,7 @@ WORDS = {"easy": {"hi": "hei", "good": "god", "thanks": "takk", "and": "og",
                   "you": "du", "maybe": "kanskje"},
          "medium": {"bye": "ha det", "bread": "brød", "sorry": "unnskyld",
                     "welcome": "velkommen", "eats": "spiser",
-                    "good morning": "god morgen", "good night": "god kveld",
+                    "good morning": "god morgen", "good night": "god natt",
                     "thousand": "tusen", "bear": "bjørn", "beer": "øl"},
          "hard": {"the bread": "brødet", "please": "vær så snill",
                   "thank you very much": "tusen takk",
@@ -86,11 +86,14 @@ def english_to_norwegian():
     """
     the game in e to n
     """
+    banked_points = 0
+    round_points = 0
     lives = 3
     print("\n--- English to Norwegian ---\n")
     print(heart_calc(lives))
     question = 0
     while lives > MIN_LIVES:
+
         question += 1
         difficulty = random.randint(1, question)
         if difficulty <= 2:
@@ -108,22 +111,102 @@ def english_to_norwegian():
         answer = input(f"What is '{word}' in Norwegian? ").lower().strip()
         if answer == WORDS[difficulty][word]:
             print("\nWell done!")
+            round_points *= 2
             print(heart_calc(lives))
-
+            if difficulty == "easy":
+                print("Points +1")
+                round_points += 1
+            elif difficulty == "medium":
+                print("Points +2")
+                round_points += 2
+            elif difficulty == "hard":
+                print("Points +3")
+                round_points += 3
+            bank_risk = input(f"\nYou now have {round_points} point(s), "
+                              f"do you "
+                               "want to risk it for double or bank it? ("
+                               "bank/risk) ").lower()
+            while bank_risk != "bank" and bank_risk != "risk":
+                bank_risk = input("Please enter 'bank' or 'risk': ").lower()
+            if bank_risk == "bank":
+                banked_points += round_points
+                round_points = 0
+                print(f"You now have {banked_points} points")
+            elif bank_risk == "risk":
+                print(f"Good Luck! You are risking {round_points} point(s)")
         else:
             print(f"\nUnlucky, '{word}' in Norwegian is "
                   f"'{WORDS[difficulty][word]}'")
             lives -= 1
             print(heart_calc(lives))
+            print(f"You lost your {round_points} saved points :(")
+            round_points = 0
 
+    print(f"\nGame Over! You finished with {banked_points} points")
 
-    # 💔❤
 
 
 def norwegian_to_english():
     """
         the game in n to e
     """
+    banked_points = 0
+    round_points = 0
+    lives = 3
+    print("\n--- Norwegian to English ---\n")
+    print(heart_calc(lives))
+    question = 0
+    while lives > MIN_LIVES:
+        question += 1
+        difficulty = random.randint(1, question)
+        if difficulty <= 2:
+            difficulty = "easy"
+        elif difficulty == 3 or difficulty == 4:
+            difficulty = "medium"
+        elif difficulty >= 5:
+            if difficulty % 3 == 0:
+                difficulty = "hard"
+            elif difficulty % 3 == 1:
+                difficulty = "medium"
+            elif difficulty % 3 == 2:
+                difficulty = "hard"
+        word = random.choice(list(WORDS[difficulty]))
+        answer = input(f"What is '{WORDS[difficulty][word]}' in English? "
+                       f"").lower().strip()
+        if answer == word:
+            print("\nWell done!")
+            round_points *= 2
+            print(heart_calc(lives))
+            if difficulty == "easy":
+                print("Points +1")
+                round_points += 1
+            elif difficulty == "medium":
+                print("Points +2")
+                round_points += 2
+            elif difficulty == "hard":
+                print("Points +3")
+                round_points += 3
+            bank_risk = input(f"\nYou now have {round_points} point(s), "
+                              f"do you "
+                              "want to risk it for double or bank it? ("
+                              "bank/risk) ").lower()
+            while bank_risk != "bank" and bank_risk != "risk":
+                bank_risk = input("Please enter 'bank' or 'risk': ").lower()
+            if bank_risk == "bank":
+                banked_points += round_points
+                round_points = 0
+                print(f"You now have {banked_points} points")
+            elif bank_risk == "risk":
+                print(f"Good Luck! You are risking {round_points} point(s)")
+        else:
+            print(f"\nUnlucky, '{WORDS[difficulty][word]}' in English is "
+                  f"'{word}'")
+            lives -= 1
+            print(heart_calc(lives))
+            print(f"You lost your {round_points} saved points :(")
+            round_points = 0
+
+    print(f"\nGame Over! You finished with {banked_points} points")
 
 
 def study():
@@ -172,6 +255,3 @@ MENU_OPTIONS = {1: instructions,
 # call the main function
 main()
 
-"""
-What is "Hello" in Norwegian? 
-"""
