@@ -6,8 +6,13 @@
 
 # import any necessary functions
 import random
+import getpass
 
 # define the constants
+from getpass import getpass
+
+import maskpass
+
 WORDS = {"easy": {"hi": "hei", "good": "god", "thanks": "takk", "and": "og",
                   "one": "en", "yes": "ja", "no": "nei", "i": "jeg",
                   "you": "du", "maybe": "kanskje"},
@@ -213,6 +218,9 @@ def study():
     """
     study
     """
+    password = maskpass.askpass(prompt="Password: ", mask="*")
+    print(password)
+
 
 
 def teacher_menu():
@@ -231,7 +239,7 @@ def heart_calc(hearts):
         picture = "❤❤💔"
     elif hearts == 1:
         picture = "❤💔💔"
-    elif hearts == 0:
+    else:
         picture = "💔💔💔"
     return f"Lives: {picture}\n"
 
@@ -254,4 +262,42 @@ MENU_OPTIONS = {1: instructions,
 
 # call the main function
 main()
+
+
+"""
+Password: ****
+
+     Teacher Menu    
+1....Edit Instructions
+2...........View words
+3...........Edit words
+4...........Edit lives
+"""
+
+"""
+Password: 1234
+
+-----Teacher Menu-----
+1. Edit Instructions
+2. View words
+3. Edit words
+4. Edit lives
+"""
+
+"""
+Password: 1234
+Teacher Menu
+1-Edit Instructions
+2-View words
+3-Edit words
+4-Edit lives
+"""
+
+
+
+
+
+
+
+
 
