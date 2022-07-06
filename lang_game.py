@@ -6,7 +6,6 @@
 
 # import any necessary functions
 import random
-import maskpass
 
 # define the constants
 WORDS = {"easy": {"hi": "hei", "good": "god", "thanks": "takk", "and": "og",
@@ -61,8 +60,7 @@ def menu():
     print("2.....English to Norwegian")
     print("3.....Norwegian to English")
     print("4....................Study")
-    print("5.............Teacher Menu")
-    print("6.....................Quit")
+    print("5.....................Quit")
     option = input("Please select an option: ")
     while not try_int(option) or 1 > int(option) or int(option) > 6:
         option = input("Please select a number between 1 and 6: ")
@@ -219,25 +217,6 @@ def study():
     """
 
 
-def teacher_menu():
-    """
-    menu for the teachers
-    """
-    password = maskpass.askpass(prompt="Password: ", mask="*")
-    if password == PASSWORD:
-        print("\nTeacher Menu")
-        print("1....Edit Instructions")
-        print("2...........View Words")
-        print("3...........Edit Words")
-        print("4...........Edit lives")
-        option = input("Please select an option: ")
-        while not try_int(option) or 1 > int(option) or int(option) > 4:
-            option = input("Please select an option: ")
-        TEACHER_MENU_OPTIONS[int(option)]()
-    else:
-        print("Incorrect password")
-
-
 def heart_calc(hearts):
     """
     calculate and print the remaining hearts
@@ -261,54 +240,13 @@ def quit_game():
     exit()
 
 
-def edit_instructions(old_instructions):
-    """
-    lets the teacher change the instructions
-    """
-    print(f"\nThe current instructions are:\n{instr_print}")
-    instr_print = input("\nPlease enter new instructions: \n")
-
-
-
-def view_words():
-    """
-    lets the teacher view the words
-    """
-
-
-def edit_words():
-    """
-    lets the teacher edit the words
-    """
-
-
-def edit_lives():
-    """
-    lets the teacher edit the lives
-    """
-
-
 # define menu options down here after function have been defined.
 MENU_OPTIONS = {1: instructions,
                 2: english_to_norwegian,
                 3: norwegian_to_english,
                 4: study,
-                5: teacher_menu,
-                6: quit_game}
-TEACHER_MENU_OPTIONS = {1: edit_instructions,
-                        2: view_words,
-                        3: edit_words,
-                        4: edit_lives, }
+                5: quit_game}
+
 
 # call the main function
 main()
-
-"""
-Password: ****
-
-     Teacher Menu    
-1....Edit Instructions
-2...........View words
-3...........Edit words
-4...........Edit lives
-"""
