@@ -256,22 +256,9 @@ Study:
 What difficulty do you want to study? (easy/medium/hard) 
 How many words do you want to study? 
 
-What is "hello" in norwegian?
-Wrong it is "hallo" 3 questions remaining
+Simply click enter to see the next words
+English - Norwegian
+Hello - Hallo
+Good - God
 """
-"""
----- Study ----
-How many words do you want to study?
 
-English: Hello
-Norwegian: Hallo
-Words remaining: 5
-"""
-"""
-         STUDY
-How long do you want to study for?
-
-English    -  Norwegian
-Hello      -      Hallo
-Good       -        God
-"""
