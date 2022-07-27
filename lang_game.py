@@ -263,14 +263,4 @@ MENU_OPTIONS = {1: instructions,
 # call the main function
 main()
 
-"""
-Study:
-What difficulty do you want to study? (easy/medium/hard) 
-How many words do you want to study? 
-
-Simply click enter to see the next words
-English - Norwegian
-Hello - Hallo
-Good - God
-"""
 
