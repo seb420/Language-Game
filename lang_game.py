@@ -216,7 +216,18 @@ def study():
     study
     """
     print("Study:")
-    
+    study_difficulty = input("What difficulty do you want to study? (easy/medium/hard) ").lower()
+    while study_difficulty != "easy" and study_difficulty != "medium" and study_difficulty != "hard":
+        study_difficulty = input("Please enter 'easy', 'medium' or 'hard': ").lower()
+    num_words = input("How many words do you want to study? ")
+    while not try_int(num_words) or int(num_words) < 1 or int(num_words) > len(WORDS[study_difficulty]):
+        num_words = input("Please enter a number between 1 and " + str(len(WORDS[study_difficulty])) + ": ")
+
+    print("\nSimply click enter to see the next words\nEnglish - Norwegian")
+    study_words = list(WORDS[study_difficulty].keys())
+    random.shuffle(study_words)
+    for i in range(0, int(num_words)):
+        input(f"{study_words[i]} - {WORDS[study_difficulty][study_words[i]]}")
 
 def heart_calc(hearts):
     """
