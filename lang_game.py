@@ -215,7 +215,8 @@ def study():
     """
     study
     """
-
+    print("Study:")
+    
 
 def heart_calc(hearts):
     """
